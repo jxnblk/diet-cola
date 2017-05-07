@@ -1,0 +1,52 @@
+{
+  "name": "diet-cola",
+  "version": "1.0.0",
+  "description": "A lightweight styled-components clone for creating React UI component primitives",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "babel src --out-dir dist",
+    "dev": "webpack-dev-server",
+    "docs": "webpack",
+    "size": "npm run prepublish && bundle-size ./dist/index.js",
+    "test": "ava"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "css-in-js",
+    "stylis",
+    "glamor"
+  ],
+  "author": "Brent Jackson",
+  "license": "MIT",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "glamor": "^2.20.25",
+    "stylis": "^2.0.4"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "bundle-size": "^1.1.5",
+    "chroma-js": "^1.3.3",
+    "hello-color": "^1.0.1",
+    "lodash": "^4.17.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-test-renderer": "^15.5.4",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  }
+}

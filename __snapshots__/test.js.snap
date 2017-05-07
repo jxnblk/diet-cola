@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`handles keyframes 1`] = `
+<button
+  className="_0"
+>
+  Hello
+</button>
+`;
+
+exports[`handles pseudoclasses 1`] = `
+<button
+  className="_0"
+>
+  Hello
+</button>
+`;
+
+exports[`renders 1`] = `
+<div
+  className="_0"
+>
+  Hello
+</div>
+`;
+
+exports[`supports composition 1`] = `
+<h1
+  className="_0 _1"
+/>
+`;
