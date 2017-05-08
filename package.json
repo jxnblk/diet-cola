@@ -7,6 +7,8 @@
     "prepublish": "babel src --out-dir dist",
     "dev": "webpack-dev-server",
     "docs": "webpack",
+    "icon": "repng docs/Icon.js -w 512 -h 512 --out-dir docs --filename icon",
+    "icon-dev": "repng docs/Icon.js --dev",
     "size": "npm run prepublish && bundle-size ./dist/index.js",
     "test": "ava"
   },
@@ -40,6 +42,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
+    "repng": "^2.0.0-alpha.1",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
   },

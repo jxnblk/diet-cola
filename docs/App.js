@@ -5,7 +5,7 @@ const Features = require('./Features')
 const Example = require('./Example')
 const Demo = require('./Demo')
 const Animations = require('./Animations')
-const Theming = require('./Theming')
+// const Theming = require('./Theming')
 const Footer = require('./Footer')
 
 module.exports = class extends React.Component {
