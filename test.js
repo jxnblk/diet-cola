@@ -93,3 +93,9 @@ test('supports composition', t => {
   t.is(css, '._0 {color:tomato}._1 {font-size:64px}')
   t.snapshot(tree)
 })
+
+test('supports the `is` prop', t => {
+  const Subhead = dc('font-size:32px')('h2')
+  const tree = render(<Subhead is='h3' />).toJSON()
+  t.is(tree.type, 'h3')
+})

@@ -13,8 +13,8 @@ sheet.inject()
 const withStyle = styles => Comp => {
   const cn = insert(styles)
 
-  const Component = props => (
-    createElement(Comp, {
+  const Component = ({ is, ...props }) => (
+    createElement(is || Comp, {
       ...props,
       className: classnames(cn, props.className)
     })
