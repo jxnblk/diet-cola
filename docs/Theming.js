@@ -13,9 +13,9 @@ const Theme = require('./Theme')
 
 module.exports = class extends React.Component {
   state = {
-    h: 160,
+    h: 170,
     s: 1,
-    l: .5
+    l: 1
   }
 
   update = fn => this.setState(fn)
