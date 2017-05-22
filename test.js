@@ -8,21 +8,21 @@ test.afterEach(() => {
 })
 
 test('renders', t => {
-  const Comp = dc('div')(`
+  const Comp = dc(`
     color: tomato;
     padding: 16px;
-  `)
+  `)('div')
   const tree = render(<Comp children='Hello' />).toJSON()
   t.snapshot(tree)
 })
 
 test('handles pseudoclasses', t => {
-  const Comp = dc('button')(`
+  const Comp = dc(`
     color: tomato;
     &:hover {
       color: black;
     }
-  `)
+  `)('button')
   const tree = render(<Comp children='Hello' />).toJSON()
   const css = dc.getCss()
   t.snapshot(tree)
@@ -30,14 +30,14 @@ test('handles pseudoclasses', t => {
 })
 
 test('handles keyframes', t => {
-  const Comp = dc('button')(`
+  const Comp = dc(`
     animation: pulsate;
     @keyframes pulsate {
       0% { opacity: 1 }
       50% { opacity: 0 }
       100% { opacity: 1 }
     }
-  `)
+  `)('button')
   const tree = render(<Comp children='Hello' />).toJSON()
   const css = dc.getCss()
   t.snapshot(tree)
@@ -45,8 +45,8 @@ test('handles keyframes', t => {
 })
 
 test('dedupes repeated styles', t => {
-  const One = dc('div')('color:tomato')
-  const Two = dc('div')('color:tomato')
+  const One = dc('color:tomato')('div')
+  const Two = dc('color:tomato')('div')
   const one = render(<One />).toJSON()
   const two = render(<Two />).toJSON()
   t.is(one.props.className, two.props.className)
@@ -71,7 +71,7 @@ test('exports clearCache()', t => {
 })
 
 test('supports server side rendering', t => {
-  const Comp = dc('h1')(`color:tomato`)
+  const Comp = dc(`color:tomato`)('h1')
   const css = dc.getCss()
   dc.clearCache()
   t.is(typeof css, 'string')
@@ -79,14 +79,14 @@ test('supports server side rendering', t => {
 })
 
 test('clears cache', t => {
-  const Comp = dc('h1')('color:tomato')
+  const Comp = dc('color:tomato')('h1')
   dc.clearCache()
   t.deepEqual(dc.cache, {})
 })
 
 test('supports composition', t => {
-  const Tomato = dc('h1')('color:tomato')
-  const BigTomato = dc(Tomato)('font-size:64px')
+  const Tomato = dc('color:tomato')('h1')
+  const BigTomato = dc('font-size:64px')(Tomato)
   const tree = render(<BigTomato />).toJSON()
   const css = dc.getCss()
   t.is(tree.props.className, '_0 _1')

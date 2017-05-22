@@ -1,6 +1,6 @@
 const dc = require('diet-cola')
 
-module.exports = dc('header')(`
+module.exports = dc(`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,4 +23,4 @@ module.exports = dc('header')(`
     66% { background-color: #c0f }
     100% { background-color: #0cf }
   }
-`)
+`)('header')

@@ -1,4 +1,4 @@
-const React = require('react')
+const { createElement } = require('react')
 const { StyleSheet } = require('glamor/lib/sheet')
 const stylis = require('stylis')
 const classnames = require('classnames')
@@ -10,27 +10,29 @@ const sheet = new StyleSheet()
 
 sheet.inject()
 
-const createComponent = (Tag = 'div', defaultProps) => (styles) => {
-  const cn = cache[styles] || '_' + uuid().toString(36)
-
-  if (!cache[styles]) {
-    const css = stylis('.' + cn, styles)
-    sheet.insert(css)
-    cache[styles] = cn
-  }
+const withStyle = styles => Comp => {
+  const cn = insert(styles)
 
   const Component = props => (
-    <Tag
-      {...defaultProps}
-      {...props}
-      className={classnames(cn, props.className)}
-    />
+    createElement(Comp, {
+      ...props,
+      className: classnames(cn, props.className)
+    })
   )
 
   return Component
 }
 
-module.exports = createComponent
+const insert = styles => {
+  if (cache[styles]) return cache[styles]
+  const cn = '_' + uuid().toString(36)
+  const css = stylis('.' + cn, styles)
+  sheet.insert(css)
+  cache[styles] = cn
+  return cn
+}
+
+module.exports = withStyle
 
 module.exports.sheet = sheet
 module.exports.cache = cache
